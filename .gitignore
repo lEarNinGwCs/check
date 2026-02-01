@@ -1,42 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="refresh" content="5; url=https://www.wargods.ro/wcd/">
-    <script>
-        function doRedirect() {
-            // Get the ID from the URL (e.g. ?id=3131277)
-            var urlParams = new URLSearchParams(window.location.search);
-            var reportID = urlParams.get('id');
-
-            if (reportID && reportID.length > 0) {
-                var target = "https://www.wargods.ro/wcd/report.php?id=" + reportID;
-                
-                // Fallback 2: JavaScript Redirect
-                window.location.href = target;
-                
-                // Fallback 3: Extra aggressive redirect for old browsers
-                setTimeout(function() {
-                    window.location.replace(target);
-                }, 500);
-            } else {
-                document.getElementById('msg').innerHTML = "<h1 style='color:red;'>No ID found in link!</h1><p>Example: ?id=3131277</p>";
-            }
+    <style>
+        body { background: #000; color: #fff; text-align: center; font-family: Tahoma; padding-top: 20%; }
+        .btn { 
+            background: #22dd22; color: #000; padding: 20px; 
+            text-decoration: none; font-weight: bold; border-radius: 5px;
+            font-size: 24px; display: inline-block;
         }
-    </script>
+    </style>
 </head>
-<body onload="doRedirect()" style="background:#000; color:#fff; text-align:center; font-family:sans-serif; padding-top:50px;">
-    <div id="msg">
-        <h2>WarGods Redirect</h2>
-        <p>Sending you to the report...</p>
-        <p>If the page doesn't change, <a id="manualLink" href="#" style="color:#00ff00;">Click Here</a></p>
-    </div>
+<body>
+    <h1>WARGODS REPORT FOUND</h1>
+    <p>The CS 1.6 browser cannot open secure links automatically.</p>
+    <br>
+    <a id="wgLink" class="btn" href="#">CLICK HERE TO VIEW REPORT</a>
 
     <script>
-        // Set the manual link just in case
         var urlParams = new URLSearchParams(window.location.search);
         var reportID = urlParams.get('id');
         if (reportID) {
-            document.getElementById('manualLink').href = "https://www.wargods.ro/wcd/report.php?id=" + reportID;
+            document.getElementById('wgLink').href = "https://www.wargods.ro/wcd/report.php?id=" + reportID;
+        } else {
+            document.body.innerHTML = "<h1>Error: No ID provided</h1>";
         }
     </script>
 </body>
